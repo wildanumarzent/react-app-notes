@@ -10,8 +10,8 @@ const TodoForm = ({ addTodo }) => {
       alert("no blank todo");
       return;
     }
-    // addTodo(value);
-    alert(value);
+    addTodo(value);
+    // alert(value);
     setValue("");
   };
   console.log(value);

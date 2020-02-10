@@ -1,22 +1,22 @@
 import React from "react";
 
-import PropsType from "prop-types";
+import PropsTypes from "prop-types";
 import Todo from "./todo";
 
 const Todos = ({ todos }) => {
   return (
     <section className="todos">
-      {todos.map(todo => {
-        return <Todo text={todo.text} />;
+      {todos.map((todo, index) => {
+        return <Todo key={index} text={todo.text} />;
       })}
     </section>
   );
 };
 
 Todos.propsType = {
-  todos: PropsType.arrayOf(
-    PropsType.shape({
-      text: PropsType.string
+  todos: PropsTypes.arrayOf(
+    PropsTypes.shape({
+      text: PropsTypes.string
     })
   )
 };
