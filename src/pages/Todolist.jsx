@@ -7,26 +7,36 @@ import TodoForm from "../components/TodoForm";
 import Todos from "../components/Todos";
 const Todolist = () => {
   const [todos, setTodos] = useState([
-    { text: "elearning" },
-    { text: "learning react hooks" },
-    { text: "learning style in react" }
+    { text: "elearning", isCompleted: false },
+    { text: "learning react hooks", isCompleted: false },
+    { text: "learning style in react", isCompleted: false }
   ]);
 
   const [showAdd, setshowAdd] = useState(false);
 
   const addTodo = value => {
-    const addedTodo = [...todos, { text: value }];
+    if (todos.length < 10) {
+      const addedTodo = [...todos, { text: value, isCompleted: false }];
+
+      setTodos(addedTodo);
+    } else {
+      alert("only 10 todos is allowed");
+    }
+  };
+  const completeTodo = index => {
+    const addedTodo = [...todos];
+    addedTodo[index].isCompleted = !addedTodo[index].isCompleted;
 
     setTodos(addedTodo);
   };
 
   const showAddToggle = () => setshowAdd(!showAdd);
-  console.log("showadd", showAdd);
+  console.log("todos", todos);
   return (
     <Paper>
-      <Header showAddToggle={showAddToggle} />
+      <Header showAddToggle={showAddToggle} showAdd={showAdd} />
       <TodoForm addTodo={addTodo} showAdd={showAdd} />
-      <Todos todos={todos} />
+      <Todos todos={todos} completeTodo={completeTodo} />
     </Paper>
   );
 };

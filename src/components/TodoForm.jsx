@@ -10,6 +10,13 @@ const TodoForm = ({ addTodo, showAdd }) => {
       alert("no blank todo");
       return;
     }
+
+    if (value.length > 40) {
+      alert("karakter jangan lebih dari 40");
+      setValue("");
+      return;
+    }
+
     addTodo(value);
     // alert(value);
     setValue("");
